@@ -2,8 +2,7 @@ Shader "Custom/Terrain"
 {
     Properties
     {
-        testTexture("Texture", 2D) = "white" {}
-        testScale("Scale", float) = 1
+
     }
     SubShader
     {
@@ -70,15 +69,6 @@ Shader "Custom/Terrain"
 
                 o.Albedo = o.Albedo * (1 - drawStrength) + (baseColor + textureColor) * drawStrength;
             }
-
-            
-
-            // triplaner mapping yeet
-
-
-
-
-
         }
         ENDCG
     }

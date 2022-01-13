@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Terrain
+  m_Shader: {fileID: -6465566751694194690, guid: 2d13d99399d19c7478db3c58329ae621, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2DArray_8da64054b9b34e41bfd45d1938370df0:
+        m_Texture: {fileID: 18700000, guid: 007ca139e86f6a24588ad6eb460ee01b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_3345856f3a6b4491a10a8439665a2898: 0
+    - Vector1_572e04a9150e4eb4aec43ee2cb7c434e: 0.7
+    - Vector1_6fe18915392347eca208e4fc7eac9006: 0.3
+    - Vector1_9d618a9d73c94591b44b767f547687c2: 0
+    - Vector1_a0dacc39c4c542d3b2cdf0a0486778bf: 0.65
+    - Vector1_c16494ec4ee643b1b2018795eacd35e3: 0.72
+    - Vector1_cc9c0585993846f2a8460382ce7bdd40: 0
+    m_Colors: []
+  m_BuildTextureStacks: []
