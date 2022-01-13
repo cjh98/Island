@@ -54,12 +54,8 @@ public class Island : MonoBehaviour
         islandMaterial.SetFloat("minHeight", mg.minHeight);
         islandMaterial.SetFloat("maxHeight", mg.maxHeight);
 
-        print(mg.minHeight + " " + mg.maxHeight);
-
-        transform.position = new Vector3(0, -mg.minHeight, 0);
-
         mg.UpdateMesh();
 
-        textureData.Apply();
+        //textureData.Apply();
     }
 }
