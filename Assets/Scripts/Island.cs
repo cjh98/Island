@@ -17,6 +17,7 @@ public class Island : MonoBehaviour
     public float falloffStrength;
     public int width;
     public int height;
+    public int chunkSize;
     [Range(0.00001f, 1000f)]
     public float scale;
     [Range(1, 32)]
@@ -33,6 +34,8 @@ public class Island : MonoBehaviour
     [System.NonSerialized]
     public Color[] heightMap;
 
+    public Chunk chunkFab;
+
     void Awake()
     {
         main = this;
@@ -40,22 +43,12 @@ public class Island : MonoBehaviour
 
     void Start()
     {
-        
+
         GenerateIsland();
     }
 
     public void GenerateIsland()
     {
         heightMap = heightMapGenerator.GenerateHeightMap(width, height, scale, octaves, lacunarity, persistence, offsetX, offsetZ, useFalloffMap, falloffStrength);
-
-        MeshGenerator mg = GetComponent<MeshGenerator>();
-        mg.GenerateMesh(this, heightsCurve);
-
-        islandMaterial.SetFloat("minHeight", mg.minHeight);
-        islandMaterial.SetFloat("maxHeight", mg.maxHeight);
-
-        mg.UpdateMesh();
-
-        //textureData.Apply();
     }
 }

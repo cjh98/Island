@@ -13,22 +13,23 @@ public class MeshGenerator : MonoBehaviour
     [System.NonSerialized]
     public float maxHeight = float.MinValue;
 
-    public void GenerateMesh(Island island, AnimationCurve heightsCurve)
+    public void GenerateChunkMesh(Vector2Int position, Island island)
     {
-        vertices = new Vector3[island.width * island.width];
-        tris = new int[6 * (island.width - 1) * (island.width - 1)];
+        vertices = new Vector3[(island.chunkSize) * (island.chunkSize)];
+        tris = new int[6 * (island.chunkSize - 1) * (island.chunkSize - 1)];
         uvs = new Vector2[vertices.Length];
         int t;
 
         for (int i = 0; i < vertices.Length; i++)
         {
-            int x = i % island.width;
-            int y = i / island.width;
+            int x = i % (island.chunkSize);
+            int y = i / (island.chunkSize);
 
-            int index = y * island.width + x;
+            int index = y * (island.chunkSize) + x;
+            int heightMapX = x + position.x;
+            int heightMapY = y + position.y;
 
-            Vector3 pos = new Vector3(x, -island.heightMap[index].grayscale * island.heightScale, y);
-            //pos -= Vector3.up * ;
+            Vector3 pos = new Vector3(x, -island.heightMap[heightMapY * island.width + heightMapX].grayscale * island.heightScale, y);
 
             if (pos.y < minHeight)
                 minHeight = pos.y;
@@ -38,17 +39,17 @@ public class MeshGenerator : MonoBehaviour
 
             vertices[index] = pos;
 
-            if (x != island.width - 1 && y != island.width - 1)
+            if (x != island.chunkSize - 1 && y != island.chunkSize - 1)
             {
-                t = (y * (island.width - 1) + x) * 3 * 2;
+                t = (y * (island.chunkSize - 1) + x) * 6;
 
-                tris[t + 0] = index + island.width;
-                tris[t + 1] = index + island.width + 1;
-                tris[t + 2] = index;
+                tris[t + 0] = index + island.chunkSize;             // top left
+                tris[t + 1] = index + island.chunkSize + 1;         // top right
+                tris[t + 2] = index;                                // bottom left
 
-                tris[t + 3] = index + island.width + 1;
-                tris[t + 4] = index + 1;
-                tris[t + 5] = index;
+                tris[t + 3] = index + island.chunkSize + 1;         // top right
+                tris[t + 4] = index + 1;                            // bottom right
+                tris[t + 5] = index;                                // bottom left
 
                 t += 6;
             }

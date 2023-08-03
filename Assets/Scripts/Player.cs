@@ -16,7 +16,6 @@ public class Player : MonoBehaviour
     Vector3 moveAmount;
     Vector3 smoothMoveVelocity;
     float verticalLookRotation;
-    float jumpTestDist = 0.15f;
 
 
     // Start is called before the first frame update
@@ -37,24 +36,20 @@ public class Player : MonoBehaviour
         Vector3 moveDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
         Vector3 targetMoveAmount = moveDir * (Input.GetKey(KeyCode.LeftShift) ? sprintSpeed : walkSpeed);
         moveAmount = Vector3.SmoothDamp(moveAmount, targetMoveAmount, ref smoothMoveVelocity, .15f);
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            if (Grounded())
-                rb.AddForce(transform.up * jumpForce);
-        }
     }
 
     void FixedUpdate()
     {
         rb.MovePosition(rb.position + transform.TransformDirection(moveAmount) * Time.fixedDeltaTime);
-    }
 
-    bool Grounded()
-    {
-        Ray ray = new Ray(transform.position + (transform.up * .04f), -transform.up);
-        RaycastHit hit;
+        if (Input.GetButton("Jump"))
+        {
+            transform.position += 10.0f * Time.fixedDeltaTime * Vector3.up;
+        }
 
-        return Physics.Raycast(ray, out hit, jumpTestDist);
+        if (Input.GetButton("Crouch"))
+        {
+            transform.position -= 10.0f * Time.fixedDeltaTime * Vector3.up;
+        }
     }
 }
