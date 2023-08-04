@@ -13,7 +13,7 @@ public class MeshGenerator : MonoBehaviour
     [System.NonSerialized]
     public float maxHeight = float.MinValue;
 
-    public void GenerateChunkMesh(Vector2Int position, Island island)
+    public void GenerateChunkMesh(Vector2Int position, Island island, int dimensions)
     {
         vertices = new Vector3[(island.chunkSize) * (island.chunkSize)];
         tris = new int[6 * (island.chunkSize - 1) * (island.chunkSize - 1)];
@@ -26,16 +26,26 @@ public class MeshGenerator : MonoBehaviour
             int y = i / (island.chunkSize);
 
             int index = y * (island.chunkSize) + x;
-            int heightMapX = x + position.x;
-            int heightMapY = y + position.y;
 
-            Vector3 pos = new Vector3(x, -island.heightMap[heightMapY * island.width + heightMapX].grayscale * island.heightScale, y);
+            float x_2 = x * ((float)dimensions / (island.chunkSize - 1));
+            float y_2 = y * ((float)dimensions / (island.chunkSize - 1));
 
-            if (pos.y < minHeight)
-                minHeight = pos.y;
+            // makes sure not all sampling from the same place (0 - len)
+            int heightMapX = Mathf.FloorToInt(x_2 + position.x);
+            int heightMapY = Mathf.FloorToInt(y_2 + position.y);
+            
+            int heightIndex = heightMapY * island.width + heightMapX;
 
-            if (pos.y > maxHeight)
-                maxHeight = pos.y;
+            Vector3 pos = new Vector3(
+                x_2,
+                -island.heightMap[heightIndex].grayscale * island.heightScale, 
+                y_2);
+
+            //if (pos.y < minHeight)
+            //    minHeight = pos.y;
+
+            //if (pos.y > maxHeight)
+            //    maxHeight = pos.y;
 
             vertices[index] = pos;
 

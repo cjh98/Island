@@ -217,13 +217,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 127322718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 21, z: 0}
+  m_LocalPosition: {x: 1000, y: 21, z: 1000}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &127322723
 MonoBehaviour:
@@ -615,9 +615,9 @@ MonoBehaviour:
     m_RotationOrder: 4
   useFalloffMap: 0
   falloffStrength: 0.6
-  width: 2000
-  height: 2000
-  chunkSize: 20
+  width: 4000
+  height: 4000
+  chunkSize: 51
   scale: 500
   octaves: 8
   lacunarity: 2
@@ -627,7 +627,7 @@ MonoBehaviour:
   offsetZ: 0
   renderTexture: {fileID: 877380230}
   textureData: {fileID: 1060710094}
-  chunkFab: {fileID: 6181276062532352094, guid: 6a63973a2f568094ea98fa138803ab46, type: 3}
+  chunkFab: {fileID: 0}
 --- !u!4 &1060710090
 Transform:
   m_ObjectHideFlags: 0
@@ -636,12 +636,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1060710088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 150, y: 0, z: 150}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &1060710091
 MeshRenderer:

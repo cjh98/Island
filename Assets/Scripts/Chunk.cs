@@ -4,13 +4,10 @@ public class Chunk : MonoBehaviour
 {
     MeshGenerator mg;
 
-    public int size;
-
-    private void Start()
+    public void GenerateMesh(Vector2Int position, int dimensions)
     {
         mg = gameObject.AddComponent<MeshGenerator>();
-
-        mg.GenerateChunkMesh(new Vector2Int(Mathf.FloorToInt(transform.position.x), Mathf.FloorToInt(transform.position.z)), Island.main);
+        mg.GenerateChunkMesh(position, Island.main, dimensions);
 
         // GENERATE TEXTURE
         Island.main.islandMaterial.SetFloat("minHeight", mg.minHeight);

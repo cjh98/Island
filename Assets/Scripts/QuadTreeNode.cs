@@ -26,7 +26,7 @@ public class QuadTreeNode
 
     public void Insert(Vector2Int point)
     {
-        if (Vector2Int.Distance(Bounds.GetCenter(), point) > Bounds.GetSize() || Bounds.GetSize() < MIN_NODE_SIZE)
+        if (Vector2Int.Distance(Bounds.GetCenter(), point) >= Bounds.GetSize() || Bounds.GetSize() < MIN_NODE_SIZE)
             return;
 
         // create children
@@ -37,7 +37,6 @@ public class QuadTreeNode
         NW = new QuadTreeNode(new Box(new Vector2Int(Bounds.Min.x, Bounds.GetCenter().y), new Vector2Int(Bounds.GetCenter().x, Bounds.Max.y)));
         Children.Add(NW);
         AllNodes.Add(NW);
-
 
         NE = new QuadTreeNode(new Box(new Vector2Int(Bounds.GetCenter().x, Bounds.GetCenter().y), new Vector2Int(Bounds.Max.x, Bounds.Max.y)));
         Children.Add(NE);
