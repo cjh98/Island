@@ -4,6 +4,8 @@ public class Chunk : MonoBehaviour
 {
     MeshGenerator mg;
 
+    public int size;
+
     private void Start()
     {
         mg = gameObject.AddComponent<MeshGenerator>();

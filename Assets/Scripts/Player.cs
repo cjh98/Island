@@ -17,7 +17,6 @@ public class Player : MonoBehaviour
     Vector3 smoothMoveVelocity;
     float verticalLookRotation;
 
-
     // Start is called before the first frame update
     void Start()
     {

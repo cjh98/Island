@@ -39,11 +39,6 @@ public class Island : MonoBehaviour
     void Awake()
     {
         main = this;
-    }
-
-    void Start()
-    {
-
         GenerateIsland();
     }
 
